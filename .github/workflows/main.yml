@@ -1,0 +1,38 @@
+name: Take Screenshot
+
+on:
+  schedule:
+    # Runs every 8 hours (at 00:00, 08:00, 16:00 UTC)
+    - cron: '0 0,8,16 * * *'
+  workflow_dispatch: # Allows you to run it manually to test
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write # Important: allows the bot to save the image back to the repo
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit and push screenshot
+        run: |
+          git config --global user.name "ScreenshotBot"
+          git config --global user.email "bot@example.com"
+          git add screenshots/
+          git commit -m "New screenshot" || echo "No changes to commit"
+          git push
