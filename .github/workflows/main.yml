@@ -3,7 +3,7 @@ name: Take Screenshot
 on:
   schedule:
     # Runs every 8 hours (at 00:00, 08:00, 16:00 UTC)
-    - cron: '0 1,9,17 * * *'
+    - cron: '0 1,5,9,13,17,21 * * *'
   workflow_dispatch: # Allows you to run it manually to test
 
 jobs:
