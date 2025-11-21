@@ -5,7 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # URL to screenshot
-URL = "https://polymarket.com/event/elon-musk-of-tweets-november-14-november-21/elon-musk-of-tweets-november-14-november-21-200-219?tid=1763541935306"
+URL = "https://polymarket.com/event/elon-musk-of-tweets-november-18-november-25?tid=1763763629223"
+
 
 def take_screenshot():
     # Setup Chrome options
